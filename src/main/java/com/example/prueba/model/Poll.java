@@ -18,7 +18,7 @@ public class Poll {
     private int id;
 
     @Column(name = "nmdocumento", nullable = false)
-    private UUID nmdocumento = UUID.randomUUID();
+    private String nmdocumento = String.valueOf(UUID.randomUUID());
 
     @Column(name = "emailpoll", nullable = false)
     private String emailpoll;
@@ -33,7 +33,9 @@ public class Poll {
     private LocalDateTime datetime = LocalDateTime.now();
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "fkidperson", nullable = false)
-    private Person person;
+    @JoinColumn(name = "iduser", nullable = false)
+    private User user;
+
+
 
 }

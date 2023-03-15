@@ -27,5 +27,8 @@ public class User {
     @JoinColumn(name = "idperson", nullable = false)
     private Person person;
 
+    @Transient
+    private String token;
+
 
 }

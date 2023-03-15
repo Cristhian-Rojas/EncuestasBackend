@@ -17,4 +17,6 @@ public class Brand {
     @Column(name = "name")
     private String name;
 
+
+
 }
