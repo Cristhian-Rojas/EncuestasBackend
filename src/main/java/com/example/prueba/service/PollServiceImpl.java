@@ -33,6 +33,11 @@ public class PollServiceImpl implements PollService {
         return repo.findById(id).orElse(null);
     }
 
+    @Override
+    public int findIdByEmail(String email) {
+        return repo.findIdByEmail(email);
+    }
+
 
 }
 

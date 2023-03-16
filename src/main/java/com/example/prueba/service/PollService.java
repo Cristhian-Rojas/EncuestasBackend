@@ -14,6 +14,6 @@ public interface PollService {
 
     Poll findById(int id);
 
-
+    int findIdByEmail(String email);
 
 }

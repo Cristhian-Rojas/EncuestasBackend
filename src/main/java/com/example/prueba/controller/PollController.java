@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/polls")
 @RequiredArgsConstructor
 public class PollController {
@@ -45,6 +46,11 @@ public class PollController {
         }
 
 
+    }
+
+    @GetMapping("/find/{email}")
+    public int findIdByEmail(@PathVariable String email) {
+        return pollService.findIdByEmail(email);
     }
 
 }

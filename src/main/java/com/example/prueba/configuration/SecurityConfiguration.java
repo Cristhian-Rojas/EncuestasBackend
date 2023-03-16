@@ -39,15 +39,18 @@ public class SecurityConfiguration {
             @Override
             protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
                 String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+
                 if (authHeader == null || !authHeader.startsWith("Bearer ")) {
                     filterChain.doFilter(request, response);
                     return;
                 }
+
                 authHeader = authHeader.replace("Bearer ", "");
                 if (!tokenManager.validateJwtToken(authHeader)) {
                     filterChain.doFilter(request, response);
                     return;
                 }
+
                 SecurityContext sc = SecurityContextHolder.getContext();
                 UsernamePasswordAuthenticationToken auth =new UsernamePasswordAuthenticationToken(tokenManager.getSubject(authHeader), null, Collections.emptyList());
                 sc.setAuthentication(auth);

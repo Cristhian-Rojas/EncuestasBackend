@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
@@ -35,7 +36,9 @@ public class UserController {
 
        user.setPassword(null);
        String token = tokenManager.generateJwtToken(user.getEmail());
+
        user.setToken(token);
+
        return user;
     }
 
