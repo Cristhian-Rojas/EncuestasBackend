@@ -9,4 +9,5 @@ public interface PollRepository extends JpaRepository<Poll, Integer> {
     @Query("SELECT p.id FROM User p WHERE p.email = :email")
     int findIdByEmail(String email);
 
+
 }
